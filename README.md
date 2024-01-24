@@ -23,17 +23,6 @@ Then build the static params
     pnpm build
 ```
 
-_placeholderData_ 
-
-renders cached data while actual query fetches in background
-
-```JavaScript
-    useQuery({ 
-        ...
-        placeholderData: keepPreviousData
-    })
-```
-
 all slugs should render html in .next folder
 
 See how fast the slugs render...
