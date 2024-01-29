@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { Data } from "../data/[slug]/page"
+import { Data } from "@/types"
 
 export async function GET(): Promise<NextResponse<Data[]>> {
 
