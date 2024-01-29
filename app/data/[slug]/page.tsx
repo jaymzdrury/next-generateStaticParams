@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getData } from "../../../actions/actions";
-import { Data, Params } from "../../../types";
 
 export const generateMetadata = ({params}: Params): Metadata => {
   return {
