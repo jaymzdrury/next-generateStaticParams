@@ -1,6 +1,6 @@
-import { Data } from "../../data/[slug]/page";
-import { notFound } from "next/navigation";
 import { NextResponse } from "next/server";
+import { notFound } from "next/navigation";
+import { Data } from "@/types";
 
 type Params = {
     params: {
