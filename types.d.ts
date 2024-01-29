@@ -1,9 +1,9 @@
-export interface Data {
+interface Data {
     id: string,
     name: string
 }
   
-export type Params = {
+type Params = {
     params: {
         slug: string
     }
