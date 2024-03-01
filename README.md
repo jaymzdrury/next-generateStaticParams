@@ -6,12 +6,12 @@
 
 `npx create-next-app@latest`
 
-***
+---
 
 _.env.local_
 
 ```JavaScript
-    URL=http://locahost:3000
+    URL=http://localhost:3000
 ```
 
 _instructions_
@@ -19,6 +19,7 @@ _instructions_
 Visit every SLUG first (1-10)
 
 Then build the static params
+
 ```JavaScript
     pnpm build
 ```
@@ -26,6 +27,7 @@ Then build the static params
 all slugs should render html in .next folder
 
 See how fast the slugs render...
+
 ```JavaScript
     pnpm start
 ```
