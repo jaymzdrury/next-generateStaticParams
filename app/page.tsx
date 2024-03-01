@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata = (): Metadata => {
   return {
-      title: 'Main Page',
+    title: "Main Page",
   };
 };
 
@@ -11,7 +11,7 @@ export default function Home(): JSX.Element {
   return (
     <main>
       <h1>Hello</h1>
-      <Link href='/data/1'>Slug</Link>
+      <Link href="/data/1">Slug</Link>
     </main>
   );
 }

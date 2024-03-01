@@ -1,26 +1,25 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getData } from "../../../actions/actions";
+import { getAllData, getData } from "../../../actions/actions";
 
-export const generateMetadata = ({params}: Params): Metadata => {
+export const generateMetadata = ({ params }: Params): Metadata => {
   return {
-      title: `${params.slug}`,
+    title: `${params.slug}`,
   };
 };
 
-export async function generateStaticParams(): Promise<Data[]> {
-  const data = await fetch(`${process.env.URL}/api`).then((res) => res.json());
-  return data.map((d: Data) => ({
-    slug: d.id.toString()
-  }))
+export async function generateStaticParams() {
+  const data: Data[] = await getAllData();
+  return data.map((d) => ({
+    slug: d.id.toString(),
+  }));
 }
 
-export default async function Slug ({params}: Params): Promise<JSX.Element> {
-    
-  const { slug } = params
-  if (Number(slug) > 10) notFound()
-    
-  const { name } = await getData(slug)
+export default async function Slug({ params }: Params): Promise<JSX.Element> {
+  const { slug } = params;
+  if (Number(slug) > 10) notFound();
+
+  const { name } = await getData(slug);
 
   return (
     <main>
@@ -28,5 +27,4 @@ export default async function Slug ({params}: Params): Promise<JSX.Element> {
       <p>{name}</p>
     </main>
   );
-
 }

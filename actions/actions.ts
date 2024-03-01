@@ -1,14 +1,22 @@
-import { Data } from "@/types"
+import { get, getAll } from "@/lib/db";
+import { Schema } from "@/lib/schema";
 
-export async function getData (id: string): Promise<Data> {
+export async function getData(id: string) {
+  const { success } = Schema.safeParse({ id });
 
-  if(!id) throw new Error()
-  
-  const res = await fetch(`${process.env.URL}/api/${id}`)
-  const data = await res.json()
+  if (!success) return { error: "invalid" };
 
-  if(!res.ok) throw new Error()
+  const { error, data } = await get(id);
 
-  return data
-  
+  if (error) throw new Error(error);
+
+  return data;
+}
+
+export async function getAllData() {
+  const { error, data } = await getAll();
+
+  if (error) throw new Error(error);
+
+  return data;
 }
