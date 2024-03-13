@@ -1,19 +1,20 @@
 import { get, getAll } from "@/lib/db";
-import { Schema } from "@/lib/schema";
+import { DataSchema } from "@/types/schemas";
+import { Data, IdType } from "@/types/types";
 
-export async function getData(id: string) {
-  const { success } = Schema.safeParse({ id });
+export async function getData(id: IdType): Promise<Data> {
+  const { success } = DataSchema.pick({ id: true }).safeParse({ id });
 
-  if (!success) return { error: "invalid" };
+  if (!success) throw new Error("invalid");
 
   const { error, data } = await get(id);
 
   if (error) throw new Error(error);
 
-  return data;
+  return data as Data;
 }
 
-export async function getAllData() {
+export async function getAllData(): Promise<Data[]> {
   const { error, data } = await getAll();
 
   if (error) throw new Error(error);

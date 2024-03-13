@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllData, getData } from "../../../actions/actions";
+import { Params } from "@/types/types";
 
 export const generateMetadata = ({ params }: Params): Metadata => {
   return {
@@ -9,7 +10,7 @@ export const generateMetadata = ({ params }: Params): Metadata => {
 };
 
 export async function generateStaticParams() {
-  const data: Data[] = await getAllData();
+  const data = await getAllData();
   return data.map((d) => ({
     slug: d.id.toString(),
   }));

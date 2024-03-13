@@ -1,6 +1,8 @@
+import { IdType } from "@/types/types";
+
 const url = "https://jsonplaceholder.typicode.com/users/";
 
-export async function get(id: string) {
+export async function get(id: IdType) {
   try {
     const res = await fetch(url + id);
     const data = await res.json();
